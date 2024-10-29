@@ -21,5 +21,18 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-let computerChoice = getComputerChoice();
+/**
+ * La fonction retourne le choix de l'utilisateur
+ */
+function getHumanChoice() {
+  let valueValide = false;
+  while (valueValide === false) {
+    let humanChoice = prompt("Saisir une des valeur : Pierre, Feuille, Ciseau").toLowerCase();
+    if (humanChoice === "pierre" || humanChoice === "feuille" || humanChoice === "ciseau") {
+      return humanChoice;
+    } else {
+      alert("Valeur non valide");
+    }
+  }
+}
 
