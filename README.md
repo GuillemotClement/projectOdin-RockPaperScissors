@@ -14,7 +14,7 @@ Création d'un jeu pierre, papier, ciseaux. Le jeu est jouable dans la console.
 
 ### Step 1: Setup the project structure
 
-- Create a new Git repository for your project.
+- Create a new Git repository for your project. -OK
 - Create a blank HTML document with a script tag.
 - Check if JavaScript is linked correctly:
 - Write console.log("Hello World") in JavaScript.
