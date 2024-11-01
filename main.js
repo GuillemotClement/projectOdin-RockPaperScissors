@@ -50,7 +50,7 @@ function playRound(humanChoice, computerChoice){
 }
 
 function playGame(){
-    let round = 0;
+    let round = 1;
     const numberOfRound = 5;
 
     while (round <= numberOfRound){
@@ -58,6 +58,8 @@ function playGame(){
         // console.log(playRound(getHumanChoice(), getComputerChoice()));
         // console.log("Score de l'humain :" + humanScore);
         // console.log("Score du computer :" + computerScore);
+
+
 
         if(round === numberOfRound){
             if(humanScore > computerScore){
@@ -68,11 +70,19 @@ function playGame(){
         }
         round++;
     }
+
+    if(humanScore > computerScore){
+        return "Victoire pour toi !";
+    }else{
+        return "Victoire de l'ordinateur";
+    }
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
+
+const resultOfGame = playGame()
 // playGame(5);
 /*
 La fonction permet de récupérer le choix de l'utilisateur
@@ -94,3 +104,13 @@ scissorBtn.addEventListener("click", () => getHumanChoice());
 
 // RECUPERATION DU NOMBRE DE ROUND
 // const numberOfRound = document.querySelector("#numberRound").value;
+
+// ----------------------- AFFICHAGE RESULTAT --------------------------------------->
+const containerResult = document.querySelector("#container-result");
+const showResult = document.createElement('p');
+showResult.textContent = resultOfGame();
+containerResult.appendChild(showResult);
+
+//--------------------------- START GAME -------------------------------------------->
+const startGame = document.querySelector("#startGame");
+startGame.addEventListener("click", () => playGame());
