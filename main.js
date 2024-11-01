@@ -1,45 +1,10 @@
 /**
- * Retourne une des valeurs pierre/feuille/ciseau
- * @param value
- * @returns {string}
- */
-function returnChoice(value){
-    switch (value){
-        case 0:
-            return 'pierre';
-        case 1:
-            return "feuille";
-        case 2:
-            return "ciseau";
-        default:
-            return "Erreur, cette valeur n'est pas valide";
-    }
-}
-
-/**
  * Retourne une valeur aléatoire entre 0 et 2 permettant de faire un choix aléatoire
  * @returns {string}
  */
 function getComputerChoice(){
-    let randomValue = Math.floor(Math.random() * 3);
-    return returnChoice(randomValue);
+    return Math.floor(Math.random() * 3);
 }
-
-/**
- * Retourne le choix de l'utilisateur. La valeur est demandée via une alerte dans el navigateur
- * @returns {string}
- */
-// function getHumanChoice(){
-//     let valideValue = false;
-//     let userChoice;
-//     while (!valideValue){
-//         userChoice = parseInt(prompt("Saisir une valeur (0 - Pierre, 1 - Feuille, 2 - Ciseau)"));
-//         if(userChoice === 1 || userChoice === 0 || userChoice === 2) {
-//             valideValue = true;
-//         }
-//     }
-//     return returnChoice(userChoice);
-// }
 
 /**
  * Retourne le vainqueur du round
@@ -47,49 +12,52 @@ function getComputerChoice(){
  * @param computerChoice
  */
 function playRound(humanChoice, computerChoice){
-    console.log("Choix de humain : " + humanChoice);
-    console.log("Choix de l'ordinateur : " + computerChoice);
-    if(humanChoice === "pierre"){
-        if(computerChoice === "feuille"){
-            computerScore++;
-            return "Victoire de l'ordinateur";
-        }else if(computerChoice === "pierre"){
-            return "Égalité";
-        }else if(computerChoice === "ciseau"){
-            humanScore++;
-            return "Victoire de l'humain";
+
+    // STONE -> 0
+    // PAPIER -> 1
+    // SCISSOR -> 2
+    if(humanChoice === 0){
+        if(computerChoice === 0){
+            return "Egalité";
+        }else if(computerChoice === 1){
+            computerChoice++;
+            return "Le point pour l'ordinateur";
+        }else if(computerChoice === 2){
+            humanChoice++;
+            return "Le point pour toi";
         }
-    }else if(humanChoice === "feuille"){
-        if(computerChoice === "feuille"){
-            return "Égalité";
-        }else if(computerChoice === "pierre"){
-            humanScore++;
-            return "Victoire de l'humain";
-        }else if(computerChoice === "ciseau"){
-            computerScore++;
-            return "Victoire de l'ordinateur";
+    }else if(humanChoice === 1){
+        if(computerChoice === 0){
+            humanChoice++;
+            return "Le point pour toi";
+        }else if(computerChoice === 1){
+            return "Egalité";
+        }else if(computerChoice === 2){
+            computerChoice++;
+            return "Le point pour l'ordinateur";
         }
-    }else if(humanChoice === "ciseau"){
-        if(computerChoice === "feuille"){
-            humanScore++;
-            return "Victoire de l'humain";
-        }else if(computerChoice === "pierre"){
-            computerScore++;
-            return "Victoire de l'ordinateur";
-        }else if(computerChoice === "ciseau"){
-            return "Égalité";
+    }else if(humanChoice === 2){
+        if(computerChoice === 0){
+            computerChoice++;
+            return "Le point pour l'ordinateur";
+        }else if(computerChoice === 1){
+            humanChoice++;
+            return "Le point pour toi";
+        }else if(computerChoice === 2){
+            return "Egalité";
         }
     }
 }
 
-function playGame(numberOfRound){
-    let round = 1;
+function playGame(){
+    let round = 0;
+    const numberOfRound = 5;
 
     while (round <= numberOfRound){
-        console.log("Round n°" + round);
-        console.log(playRound(getHumanChoice(), getComputerChoice()));
-        console.log("Score de l'humain :" + humanScore);
-        console.log("Score du computer :" + computerScore);
+        // console.log("Round n°" + round);
+        // console.log(playRound(getHumanChoice(), getComputerChoice()));
+        // console.log("Score de l'humain :" + humanScore);
+        // console.log("Score du computer :" + computerScore);
 
         if(round === numberOfRound){
             if(humanScore > computerScore){
@@ -104,17 +72,25 @@ function playGame(numberOfRound){
 
 let humanScore = 0;
 let computerScore = 0;
-// playGame(5);
 
+// playGame(5);
+/*
+La fonction permet de récupérer le choix de l'utilisateur
+ */
 function getHumanChoice(choice){
-    console.log(choice);
+    return choice;
 };
 
-//GESTION EVENT
+// --------------------- GESTION EVENT ----------------------------------------->
+// RECUPERATION DES BOUTONS
 const paperBtn = document.querySelector("#paper");
 const stoneBtn = document.querySelector("#stone");
 const scissorBtn = document.querySelector('#scissor');
 
-paperBtn.addEventListener("click", () => getHumanChoice("paper"));
-stoneBtn.addEventListener("click", () => getHumanChoice("stone"));
-scissorBtn.addEventListener("click", () => getHumanChoice("scissor"));
+// AJOUT EVENT CLICK SUR LES BOUTONS
+stoneBtn.addEventListener("click", () => getHumanChoice());
+paperBtn.addEventListener("click", () => getHumanChoice());
+scissorBtn.addEventListener("click", () => getHumanChoice());
+
+// RECUPERATION DU NOMBRE DE ROUND
+// const numberOfRound = document.querySelector("#numberRound").value;
