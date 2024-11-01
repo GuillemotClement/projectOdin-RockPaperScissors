@@ -25,6 +25,21 @@ function getComputerChoice(){
     return returnChoice(randomValue);
 }
 
+/**
+ * Retourne le choix de l'utilisateur. La valeur est demandée via une alerte dans el navigateur
+ * @returns {string}
+ */
+function getHumanChoice(){
+    let valideValue = false;
+    let userChoice;
+    while (!valideValue){
+        userChoice = parseInt(prompt("Saisir une valeur (0 - Pierre, 1 - Feuille, 3 - Ciseau)"));
+        if(userChoice === 1 || userChoice === 0 || userChoice === 2) {
+            valideValue = true;
+        }
+    }
+    return returnChoice(userChoice);
+}
 
-
-
+let humanScore = 0;
+let computerScore = 0;
