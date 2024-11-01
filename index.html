@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Document</title>
+    <title>Pierre Feuille Ciseau</title>
     <!-- IMPORT JS -->
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
-  <body></body>
+  <body>
+    <div id="container">
+      <h1>Pierre Feuille Ciseau</h1>
+      <div class="container-action">
+        <button class="btn" id="stone"><i class="fa-solid fa-gem"></i></button>
+        <button class="btn" id="paper"><i class="fa-solid fa-scroll"></i></button>
+        <button class="btn" id="scissor"><i class="fa-solid fa-scissors"></i></button>
+      </div>
+      <div id="container-result"></div>
+    </div>
+  </body>
 </html>

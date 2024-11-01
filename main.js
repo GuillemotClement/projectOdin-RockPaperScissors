@@ -29,17 +29,17 @@ function getComputerChoice(){
  * Retourne le choix de l'utilisateur. La valeur est demandée via une alerte dans el navigateur
  * @returns {string}
  */
-function getHumanChoice(){
-    let valideValue = false;
-    let userChoice;
-    while (!valideValue){
-        userChoice = parseInt(prompt("Saisir une valeur (0 - Pierre, 1 - Feuille, 2 - Ciseau)"));
-        if(userChoice === 1 || userChoice === 0 || userChoice === 2) {
-            valideValue = true;
-        }
-    }
-    return returnChoice(userChoice);
-}
+// function getHumanChoice(){
+//     let valideValue = false;
+//     let userChoice;
+//     while (!valideValue){
+//         userChoice = parseInt(prompt("Saisir une valeur (0 - Pierre, 1 - Feuille, 2 - Ciseau)"));
+//         if(userChoice === 1 || userChoice === 0 || userChoice === 2) {
+//             valideValue = true;
+//         }
+//     }
+//     return returnChoice(userChoice);
+// }
 
 /**
  * Retourne le vainqueur du round
@@ -104,4 +104,17 @@ function playGame(numberOfRound){
 
 let humanScore = 0;
 let computerScore = 0;
-playGame(5);
+// playGame(5);
+
+function getHumanChoice(choice){
+    console.log(choice);
+};
+
+//GESTION EVENT
+const paperBtn = document.querySelector("#paper");
+const stoneBtn = document.querySelector("#stone");
+const scissorBtn = document.querySelector('#scissor');
+
+paperBtn.addEventListener("click", () => getHumanChoice("paper"));
+stoneBtn.addEventListener("click", () => getHumanChoice("stone"));
+scissorBtn.addEventListener("click", () => getHumanChoice("scissor"));
